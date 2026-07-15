@@ -106,7 +106,12 @@ h1{
 </div>
 
 <script>
+let score = 0;
+let currentQuestion = {};
+
 async function loadQuiz() {
+
+    document.getElementById("question").innerHTML = "Loading...";
 
     const response = await fetch(
         "https://opentdb.com/api.php?amount=1&type=multiple"
@@ -115,8 +120,7 @@ async function loadQuiz() {
     const data = await response.json();
     const q = data.results[0];
 
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("quiz").style.display = "block";
+    currentQuestion = q;
 
     document.getElementById("question").innerHTML = q.question;
 
@@ -129,14 +133,55 @@ async function loadQuiz() {
 
     answers.forEach(answer => {
         html += `
-        <button class="option">${answer}</button>
+        <button class="option"
+        onclick="checkAnswer(this,'${answer.replace(/'/g,"\\'")}')">
+        ${answer}
+        </button>
         `;
     });
 
+    html += `
+    <br><br>
+    <button id="nextBtn" onclick="loadQuiz()" style="display:none;">
+        Next Question ➜
+    </button>
+    `;
+
     document.getElementById("options").innerHTML = html;
+
+    updateScore();
 }
 
-loadQuiz();
+function checkAnswer(btn, answer){
+
+    const buttons = document.querySelectorAll(".option");
+
+    buttons.forEach(b => b.disabled = true);
+
+    if(answer === currentQuestion.correct_answer){
+        btn.style.background = "green";
+        score++;
+    }else{
+        btn.style.background = "red";
+
+        buttons.forEach(b=>{
+            if(b.innerText === currentQuestion.correct_answer){
+                b.style.background = "green";
+            }
+        });
+    }
+
+    document.getElementById("nextBtn").style.display = "inline-block";
+
+    updateScore();
+}
+
+function updateScore(){
+    document.getElementById("score").innerHTML =
+        "🏆 Score: " + score;
+}
+
+window.onload = loadQuiz;
 </script>
 
 </body>
