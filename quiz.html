@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Loading</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#0f0c29,#302b63,#24243e,#ff416c);
+    background-size:400% 400%;
+    animation:bg 10s ease infinite;
+    font-family:Arial,sans-serif;
+}
+
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.box{
+    text-align:center;
+    color:white;
+    padding:40px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(10px);
+    box-shadow:0 0 30px rgba(255,255,255,0.2);
+}
+
+h1{
+    font-size:45px;
+    text-shadow:0 0 20px cyan;
+}
+
+.loader{
+    width:70px;
+    height:70px;
+    border:6px solid rgba(255,255,255,0.2);
+    border-top:6px solid cyan;
+    border-radius:50%;
+    margin:20px auto;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    100%{transform:rotate(360deg);}
+}
+
+p{
+    font-size:18px;
+    opacity:0.9;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+    <h1>Loading Questions...</h1>
+    <div class="loader"></div>
+    <p>Please wait while we prepare your quiz 🚀</p>
+</div>
+
+</body>
+</html>
