@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Master</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(-45deg,#0f0c29,#302b63,#24243e,#ff416c);
+    background-size:400% 400%;
+    animation:bg 10s ease infinite;
+}
+
+@keyframes bg{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    text-align:center;
+    color:white;
+    padding:40px;
+    border-radius:20px;
+    backdrop-filter:blur(10px);
+    background:rgba(255,255,255,0.08);
+    box-shadow:0 0 30px rgba(255,255,255,0.2);
+}
+
+h1{
+    font-size:60px;
+    margin-bottom:15px;
+    text-shadow:0 0 20px cyan;
+}
+
+p{
+    font-size:20px;
+    margin-bottom:30px;
+}
+
+button{
+    padding:15px 40px;
+    font-size:20px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    color:white;
+    background:linear-gradient(45deg,#ff416c,#ff4b2b);
+    box-shadow:0 0 20px #ff416c;
+    transition:.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>QUIZ MASTER</h1>
+    <p>GK • Science • Maths • Current Affairs</p>
+    <button onclick="startQuiz()">Start Quiz</button>
+</div>
+
+<script>
+function startQuiz(){
+    alert("Quiz Starting Soon 🚀");
+}
+</script>
+
+</body>
+</html>
