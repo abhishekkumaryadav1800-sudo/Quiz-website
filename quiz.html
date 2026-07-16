@@ -297,15 +297,29 @@ ${opt}
 
 document.getElementById("options").innerHTML=html;
 }
+window.checkAnswer = function(ans){
 
-window.checkAnswer=function(ans){
+const buttons = document.querySelectorAll(".option");
 
-if(ans===questions[current].a){
+buttons.forEach(btn => {
+
+btn.disabled = true;
+
+if(btn.innerText === questions[current].a){
+btn.style.backgroundColor = "green";
+}
+
+if(btn.innerText === ans && ans !== questions[current].a){
+btn.style.backgroundColor = "red";
+}
+
+});
+
+if(ans === questions[current].a){
 score++;
 }
 
 }
-
 window.nextQuestion=function(){
 
 current++;
